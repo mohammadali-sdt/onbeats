@@ -1,0 +1,51 @@
+{% for artist in artists %}
+    <li class="search-form__item">
+        <a
+                href="{% url 'onbeats:get_artist' artist.slug %}"
+                class="search-form__link search-form__link--artist"
+        >
+            <img
+                    src="{{ artist.profile.url }}"
+                    class="search-form__img"
+                    alt="{{ artist.name }}"
+            />
+            <div class="search-form__content">
+                <p class="search-form__name">{{ artist.name|title }}</p>
+                <p class="search-form__type">Artist</p>
+            </div>
+        </a>
+    </li>
+{% endfor %}
+{% for album in albums %}
+    <li class="search-form__item">
+        <a
+                href="{% url 'onbeats:get_album_songs' album.slug %}"
+                class="search-form__link search-form__link--album"
+        >
+            <img
+                    src="{{ album.cover.url }}"
+                    class="search-form__img"
+                    alt="{{ album.name }}"
+            />
+            <div class="search-form__content">
+                <p class="search-form__name">{{ album.name|title }}</p>
+                <p class="search-form__type">Album. {{ album.artist.name|title }}</p>
+            </div>
+        </a>
+    </li>
+{% endfor %}
+{% for song in songs %}
+    <li class="search-form__item">
+        <a href="{% url 'onbeats:get_album_songs' song.album.slug %}" class="search-form__link search-form__link--song">
+            <img
+                    src="{{ song.album.cover.url }}"
+                    class="search-form__img"
+                    alt="{{ song.name }}"
+            />
+            <div class="search-form__content">
+                <p class="search-form__name">{{ song.name|title }}</p>
+                <p class="search-form__type">Song. {{ song.album.artist.name|title }}</p>
+            </div>
+        </a>
+    </li>
+{% endfor %}

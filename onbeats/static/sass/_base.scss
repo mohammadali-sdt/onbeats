@@ -1,0 +1,97 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  list-style: none;
+}
+
+:root {
+  box-sizing: border-box;
+  font-size: 52.5%; //1rem = 8.4px
+  scrollbar-color: #636fac transparent;
+  scrollbar-width: thin;
+
+  @include respond(big-desktop) {
+    // 1rem = 10px
+    font-size: 62.5%;
+  }
+  @include respond(tab-land) {
+    // 1rem = 8.16px
+    font-size: 51%;
+  }
+  @include respond(tab) {
+    // 1rem = 8px
+    font-size: 50%;
+  }
+  @include respond(phone) {
+    // 1rem = 8px
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: $text-primary-color;
+  background-color: $body-bg-primary-color;
+}
+
+img {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 7rem;
+}
+
+.header {
+  width: 100%;
+  height: 50vh;
+}
+
+.main {
+  height: 100%;
+  padding-bottom: 5rem;
+}
+
+.plyr {
+  z-index: 1001;
+}
+
+// SCROLLBAR
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #636fac;
+  border-radius: 5rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2f3552;
+}
+::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 3.5rem;
+}
+
+::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 1rem;
+}

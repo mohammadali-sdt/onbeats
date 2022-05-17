@@ -1,0 +1,51 @@
+{% extends 'onbeats/base.html' %}
+{% load static %}
+{% block title %}
+    onBeats > {{ artist.name|title }}
+{% endblock %}
+{% block heroImage %}
+    <img
+            src="{{ artist.cover.url }}"
+            alt="{{ artist.name }}"
+            class="heroImage__img"
+    />
+{% endblock %}
+{% block artistProfile %}
+    <div class="artist-profile">
+        <div class="artist-profile__imageWrapper">
+            <img
+                    src="{{ artist.profile.url }}"
+                    alt="{{ artist.name }}"
+                    class="artist-profile__img"
+            />
+        </div>
+        <div class="artist-profile__content">
+            <h2 class="artist-profile__name">{{ artist.name }}</h2>
+            <h3 class="artist-profile__style">
+                {% for style in artist.styles.all %}
+                    {% if forloop.last %}
+                        {{ style.name|title }}
+                    {% else %}
+                        {{ style.name|title }}
+                        /
+                    {% endif %}
+                {% endfor %}
+            </h3>
+        </div>
+    </div>
+{% endblock %}
+{% block main %}
+    <section class="albums artist-albums">
+        {% for album in artist.albums.all|dictsortreversed:"release_year" %}
+            <div class="albumView">
+                <div class="albumView__cover">
+                    <img src="{{ album.cover.url }}" alt="albumCover"/>
+                </div>
+                <h2 class="albumView__title">{{ album.name }}</h2>
+                <h3 class="albumView__description">{{ album.release_year }}</h3>
+                <a href="{% url 'onbeats:get_album_songs' album.slug %}"
+                   class="albumView__btn btn btn--primary">Show</a>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}

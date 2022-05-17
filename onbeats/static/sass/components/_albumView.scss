@@ -1,0 +1,39 @@
+.albumView {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 3.5rem;
+  width: 30rem;
+  background-color: $albumView-bg-primary-color;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    @include box-shadow(0.5, 0.5, 1.5);
+  }
+
+  &__title {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  &__cover {
+    width: 30rem;
+    height: 30rem;
+    img {
+      height: 100%;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+  }
+  &__description {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  &__btn {
+    margin-bottom: 2rem;
+  }
+}

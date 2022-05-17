@@ -1,0 +1,23 @@
+.btn,
+.btn:link,
+.btn:visited {
+  text-decoration: none;
+  border: 0;
+  outline: none;
+  background-color: $btn-bg-primary-color;
+  color: $text-primary-color;
+  padding: 0.9rem 4.2rem;
+  border-radius: 10rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover,
+  &:active {
+    color: $btn-text-hover-color;
+    @include box-shadow(0.3, 0.3, 0.5);
+  }
+}
+.btn--login {
+    padding: 1.5rem 5rem !important;
+    font-size: 2.5rem;
+  }

@@ -1,0 +1,45 @@
+.album-detail {
+  position: relative;
+  width: fit-content;
+  display: flex;
+  gap: 5rem;
+  transform: translateY(-110%) translateX(15%);
+  z-index: 110000;
+  @include respond(tab) {
+    width: 100%;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: translateY(-50%) translateX(0);
+  }
+  &__name {
+  }
+  &__year {
+  }
+  &__style {
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  &__img {
+    width: 30rem;
+    height: 30rem;
+    @include box-shadow();
+    @include respond(tab) {
+      width: 18rem;
+      height: 18rem;
+    }
+  }
+  h2 {
+    font-size: 3.5rem;
+    font-weight: 400;
+    text-shadow: 0.5rem 0.5rem 0.3rem rgba(0, 0, 0, 0.8);
+    @include respond(tab){
+      font-size: 2.8rem;
+    }
+  }
+}

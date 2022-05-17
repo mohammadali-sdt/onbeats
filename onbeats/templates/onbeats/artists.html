@@ -1,0 +1,25 @@
+{% extends 'onbeats/base.html' %}
+{% load static %}
+{% block title %}
+    onBeats > Artists
+{% endblock %}
+{% block main %}
+    <section class="artists">
+        {% for artist in artists %}
+            <div class="artistView">
+                <img
+                        class="artistView__profile"
+                        src="{{artist.profile.url}}"
+                        alt="{{ artist.name }}"
+                />
+                <img
+                        class="artistView__bg"
+                        src="{{artist.profile.url}}"
+                        alt="{{ artist.name }}"
+                />
+                <h2 class="artistView__name">{{ artist.name }}</h2>
+                <a href="{% url 'onbeats:get_artist' artist.slug %}" class="artistView__btn btn btn--primary">Show</a>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}

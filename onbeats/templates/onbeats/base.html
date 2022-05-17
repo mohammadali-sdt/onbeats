@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>{% block title %} onBeats {% endblock %}</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <!-- Hero Image  -->
+        <div class="heroImage">
+          <div class="heroImage__shadow"></div>
+          {% block heroImage %}
+          <img
+            src="{% static 'img/hero-full.png' %}"
+            alt="Hero image"
+            class="heroImage__img"
+          />
+          {% endblock %}
+          <a href="javascript:void(0);" class="heroImage__menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </div>
+        <!-- End Hero Image -->
+        <!-- profile artist -->
+        {% block artistProfile %} {% endblock %}
+        <!-- End profile artist -->
+        <!-- Album detail Cover -->
+        {% block albumDetail %} {% endblock %}
+        <!-- End Album detail Cover -->
+      </header>
+      <!-- MenuView -->
+      <div class="menuView">
+        <a href="{% url 'onbeats:get_new_albums' %}" class="menuView__logo">
+          <img
+            src="{% static 'img/logo.png' %}"
+            alt="onBeats Logo"
+            class="menuView__logo-img"
+          />
+        </a>
+        <a href="#" class="menuView__cross">
+          <span></span>
+        </a>
+        <ul class="menuView__links">
+          <li class="menuView__item">
+            <a href="{% url 'onbeats:get_new_albums' %}" class="menuView__link"
+              >Home</a
+            >
+          </li>
+          {% if not user.is_authenticated %}
+          <li class="menuView__item">
+            <a href="{% url 'login' %}" class="menuView__link">Login</a>
+          </li>
+          <li class="menuView__item">
+            <a href="{% url 'register' %}" class="menuView__link">Sign Up</a>
+          </li>
+          {% endif %}
+          <li class="menuView__item">
+            <a href="{% url 'onbeats:search_page' %}" class="menuView__link"
+              >Search</a
+            >
+          </li>
+          <li class="menuView__item">
+            <a href="{% url 'onbeats:get_all_artists' %}" class="menuView__link"
+              >Artists</a
+            >
+          </li>
+          <li class="menuView__item">
+            <a href="{% url 'onbeats:about-us'%}" class="menuView__link"
+              >About us</a
+            >
+          </li>
+          {% if user.is_authenticated %}
+          <li class="menuView__item">
+            <a href="{% url 'logout' %}" class="menuView__link">Logout</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- End MenuView -->
+      <main class="main">{% block main %} {% endblock %}</main>
+    </div>
+    <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block script %} {% endblock %}
+  </body>
+</html>

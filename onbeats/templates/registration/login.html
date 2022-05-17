@@ -1,0 +1,35 @@
+{% extends 'onbeats/base.html' %}
+{% load static %}
+{% block title %}
+    onBeats > Login
+{% endblock %}
+{% block main %}
+    <section class="form-container">
+        <form class="auth-form" action="{% url 'login' %}" method="POST">
+            {% if form.errors %}
+                <h2>Your username and password didn't match.Please try again!</h2>
+            {% endif %}
+            <div class="auth-form__container">
+                <svg class="auth-form__icon">
+                    <use href="{% static 'img/sprite.svg' %}#icon-user"></use>
+                </svg>
+                <input type="text" class="auth-form__input" placeholder="Username" name="username" autofocus=""
+                       autocapitalize="none" autocomplete="username"
+                       maxlength="150" required="" id="id_username">
+            </div>
+            <div class="auth-form__container">
+                <svg class="auth-form__icon">
+                    <use href="{% static 'img/sprite.svg' %}#icon-key"></use>
+                </svg>
+                <input type="password" class="auth-form__input" placeholder="Password" name="password"
+                       autocomplete="current-password" required="" id="id_password">
+            </div>
+            <div class="auth-form__container auth-form__container--footer">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                <button type="submit" class="btn btn--login auth-form__btn">Login</button>
+                <a href="{% url 'register' %}" class="auth-form__text">Don't Have An Account?</a>
+            </div>
+        </form>
+    </section>
+{% endblock %}

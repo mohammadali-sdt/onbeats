@@ -1,0 +1,65 @@
+.artist-profile {
+  position: relative;
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  width: 80rem;
+  transform: translateX(10%) translateY(-50%);
+  z-index: 9999999;
+
+  @include respond(tab) {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-35%);
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    word-wrap: anywhere;
+    gap: 3rem;
+  }
+
+  &__imageWrapper {
+    width: 20rem;
+    height: 20rem;
+    grid-row: 1 / -1;
+    border-radius: 100%;
+    @include box-shadow(0.8, 0.8, 0.8);
+    @include respond(tab) {
+      width: 15rem;
+      height: 15rem;
+      // grid-row: 1/2;
+      // justify-self: center;
+    }
+  }
+  &__img {
+    object-fit: cover;
+    border-radius: 100%;
+    width: 100%;
+  }
+  &__content {
+    grid-column: 2 / 3;
+    grid-row: 1 / -1;
+    align-self: center;
+    @include respond(tab) {
+      // grid-column: 1/2;
+      // grid-row: 2/3;
+    }
+  }
+  &__name {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 5rem;
+    font-weight: 500;
+    text-shadow: 0.8rem 0.8rem 0.3rem rgba(0, 0, 0, 1);
+    transform: translateY(-40%);
+    @include respond(phone) {
+      font-size: 3rem;
+    }
+  }
+  &__style {
+    font-weight: 500;
+    text-shadow: 0.8rem 0.8rem 0.3rem rgba(0, 0, 0, 1);
+  }
+}

@@ -1,0 +1,48 @@
+{% extends 'onbeats/base.html' %}
+{% load static %}
+{% block title %}
+    onBeats > Signup
+{% endblock %}
+{% block main %}
+    <section class="form-container">
+        <form action="{% url 'register' %}" method="POST" class="auth-form">
+            {% if form.errors %}
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <h2>{{ error }}</h2>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+            <div class="auth-form__container">
+                <svg class="auth-form__icon">
+                    <use href="{% static 'img/sprite.svg' %}#icon-user"></use>
+                </svg>
+                {{ form.username }}
+            </div>
+            <div class="auth-form__container">
+                <svg class="auth-form__icon">
+                    <use href="{% static 'img/sprite.svg' %}#icon-alternate_email"></use>
+                </svg>
+                {{ form.email }}
+            </div>
+            <div class="auth-form__container">
+                <svg class="auth-form__icon">
+                    <use href="{% static 'img/sprite.svg' %}#icon-key"></use>
+                </svg>
+                {{ form.password }}
+            </div>
+            <div class="auth-form__container">
+                <svg class="auth-form__icon">
+                    <use href="{% static 'img/sprite.svg' %}#icon-key"></use>
+                </svg>
+                {{ form.password2 }}
+            </div>
+            <div class="auth-form__container auth-form__container--footer">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                <button type="submit" class="btn btn--login">Signup</button>
+                <a href="{% url 'login' %}" class="auth-form__text">Already Have An Account?</a>
+            </div>
+        </form>
+    </section>
+{% endblock %}
