@@ -37,7 +37,7 @@
       controls
       controlsList="nodownload"
       preload="auto"
-      class="song-view__song js-player"
+      class="song-view__song"
       src="{{ song.file.url }}"
     ></audio>
     <a
@@ -53,9 +53,3 @@
   <!-- End Song View  -->
   {% endfor %}
 </section>
-
-{% endblock %} {% block script %}
-<script type="application/javascript">
-  {% comment %} const player = Plyr.setup('.js-player'); {% endcomment %}
-</script>
-{% endblock %}

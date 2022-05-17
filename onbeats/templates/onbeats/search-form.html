@@ -1,59 +1,52 @@
-{% extends 'onbeats/base.html' %}
-{% load static %}
-{% block title %}
-    onBeats > Search
-{% endblock %}
-{% block main %}
-    <section class="form-container">
-        <form class="search-form">
-            <div class="search-form__container">
-                <input
-                        class="search-form__input"
-                        placeholder="Artist, Album, Song"
-                        type="text"
-                />
-                <button class="search-form__button" type="submit">
-                    <svg class="search-form__icon">
-                        <use href="{% static 'img/search.svg' %}#icon-search"></use>
-                    </svg>
-                </button>
-                <ul class="search-form__suggest">
-                </ul>
-            </div>
-        </form>
-    </section>
-{% endblock %}
-
-{% block script %}
-    <script type="application/javascript">
-        const resultsContainer = document.querySelector('.search-form__suggest');
-        const searchInput = document.querySelector('.search-form__input');
-        const searchForm = document.querySelector('.search-form')
-        searchForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-        });
-        searchInput.addEventListener('keyup', async function (e) {
-            e.preventDefault();
-            const query = e.target.value;
-            if (query === '') {
-                resultsContainer.innerHTML = '';
-                resultsContainer.classList.remove('search-form__suggest--show');
-                e.target.classList.remove('search-form__input--show-suggest');
-                return;
-            }
-            const res = await fetch(`http://127.0.0.1:8000/search/${query}/`);
-            const {data} = await res.json();
-            console.log(data);
-            if (data.trim() === '') {
-                resultsContainer.innerHTML = '';
-                resultsContainer.classList.remove('search-form__suggest--show');
-                e.target.classList.remove('search-form__input--show-suggest');
-                return;
-            }
-            resultsContainer.classList.add('search-form__suggest--show');
-            e.target.classList.add('search-form__input--show-suggest');
-            resultsContainer.innerHTML = '';
-            resultsContainer.insertAdjacentHTML('afterbegin', data);
-        })
-    </script>
+{% extends 'onbeats/base.html' %} {% load static %} {% block title %} onBeats >
+Search {% endblock %} {% block main %}
+<section class="form-container">
+  <form class="search-form">
+    <div class="search-form__container">
+      <input
+        class="search-form__input"
+        placeholder="Artist, Album, Song"
+        type="text"
+      />
+      <button class="search-form__button" type="submit">
+        <svg class="search-form__icon">
+          <use href="{% static 'img/search.svg' %}#icon-search"></use>
+        </svg>
+      </button>
+      <ul class="search-form__suggest"></ul>
+    </div>
+  </form>
+</section>
+{% endblock %} {% block script %}
+<script type="application/javascript">
+  const resultsContainer = document.querySelector(".search-form__suggest");
+  const searchInput = document.querySelector(".search-form__input");
+  const searchForm = document.querySelector(".search-form");
+  searchForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+  });
+  searchInput.addEventListener("keyup", async function (e) {
+    e.preventDefault();
+    const query = e.target.value;
+    if (query === "") {
+      resultsContainer.innerHTML = "";
+      resultsContainer.classList.remove("search-form__suggest--show");
+      e.target.classList.remove("search-form__input--show-suggest");
+      return;
+    }
+    const res = await fetch(`${location.origin}/search/${query}/`);
+    const { data } = await res.json();
+    console.log(data);
+    if (data.trim() === "") {
+      resultsContainer.innerHTML = "";
+      resultsContainer.classList.remove("search-form__suggest--show");
+      e.target.classList.remove("search-form__input--show-suggest");
+      return;
+    }
+    resultsContainer.classList.add("search-form__suggest--show");
+    e.target.classList.add("search-form__input--show-suggest");
+    resultsContainer.innerHTML = "";
+    resultsContainer.insertAdjacentHTML("afterbegin", data);
+  });
+</script>
 {% endblock %}
