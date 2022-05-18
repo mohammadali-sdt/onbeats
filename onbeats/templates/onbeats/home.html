@@ -1,20 +1,21 @@
-{% extends 'onbeats/base.html' %}
-{% load static %}
-{% block title %}
-    onBeats > Home
-{% endblock %}
-{% block main %}
-    <section class="albums new-albums">
-        {% for album in albums %}
-            <div class="albumView">
-                <div class="albumView__cover">
-                    <img src="{{ album.cover.url }}" alt="albumCover"/>
-                </div>
-                <h2 class="albumView__title">{{ album.name }}</h2>
-                <h3 class="albumView__description">{{ album.artist.name|title }}&nbsp;.&nbsp;{{ album.release_year }}</h3>
-                <a href="{% url 'onbeats:get_album_songs' album.slug %}"
-                   class="albumView__btn btn btn--primary">Show</a>
-            </div>
-        {% endfor %}
-    </section>
+{% extends 'onbeats/base.html' %} {% load static %} {% block title %} onBeats >
+Home {% endblock %} {% block main %}
+<section class="albums new-albums">
+  {% for album in albums %}
+  <div class="albumView">
+    <div class="albumView__cover">
+      <img src="{{ album.cover.url }}" alt="{{album.name}}" />
+    </div>
+    <h2 class="albumView__title">{{ album.name }}</h2>
+    <h3 class="albumView__description">
+      {{ album.artist.name|title }}&nbsp;.&nbsp;{{ album.release_year }}
+    </h3>
+    <a
+      href="{% url 'onbeats:get_album_songs' album.slug %}"
+      class="albumView__btn btn btn--primary"
+      >Show</a
+    >
+  </div>
+  {% endfor %}
+</section>
 {% endblock %}
