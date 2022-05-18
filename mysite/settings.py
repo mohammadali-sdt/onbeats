@@ -146,5 +146,4 @@ LOGOUT_URL = 'logout'
 
 # GOOGLE_DRIVE_STORAGE
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'service.json')
-
 django_heroku.settings(locals())
