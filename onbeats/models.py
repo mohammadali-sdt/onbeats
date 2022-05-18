@@ -4,15 +4,20 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator, \
     FileExtensionValidator
+from gdstorage.storage import GoogleDriveStorage
 
+
+gd_storage = GoogleDriveStorage()
 
 # Create your models here.
+
+
 class Artist(models.Model):
     name = models.CharField(max_length=255, blank=False, null=False)
     profile = models.ImageField(max_length=5000, upload_to='artists_profile/',
-                                blank=False, null=False)
+                                blank=False, null=False, storage=gd_storage)
     cover = models.ImageField(max_length=5000, upload_to='artists_cover/',
-                              blank=False, null=False)
+                              blank=False, null=False, storage=gd_storage)
     slug = models.SlugField(max_length=255, unique=True)
 
     def __str__(self):
@@ -49,7 +54,7 @@ class Album(models.Model):
                     MaxValueValidator(datetime.now().year)],
         help_text='Use the following format: YYYY', blank=False, null=False)
     cover = models.ImageField(max_length=5000, upload_to='albums_cover/',
-                              blank=False, null=False)
+                              blank=False, null=False, storage=gd_storage)
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=255, unique=True)
 
@@ -77,7 +82,7 @@ class Song(models.Model):
     file = models.FileField(upload_to='songs_file/', blank=False, null=False,
                             validators=[FileExtensionValidator(
                                 allowed_extensions=['mp3'])],
-                            help_text='Allowed .mp3 files')
+                            help_text='Allowed .mp3 files', storage=gd_storage)
 
     # file_ogg = models.CharField(blank=True, editable=False, max_length=50000)
     track_number = models.PositiveIntegerField(

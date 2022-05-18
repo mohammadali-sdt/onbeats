@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "onbeats-350607",
+  "private_key_id": "d7c4e4e4b94495a6309b5d56eb3c9b2ec89720a1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDUqVdGNJvILU6x\nAA3Ijz8Rx1x0jAtQ2P+Gu53hC9ov1W9e1jGeKmVKGiWdMqDG+o84mWoLt1kXHlXH\nmWKCUAeCB7pMRj+ucWLcsgEeFQvr5lYRuuqRZz0MqRaNle4zgeQHEjY/Jrixvcbf\nUoljnW3ezRB2Sgx6OEvoofKwR9BnhWUkx6wd4r9hRgKhBAUWrfwTgDf81UxOUDMH\n+EBsl0zBtiSFfbZEiEm3TQyt0ujhWWfGH/AYVWTKXl6MRTG4nXOO/UXHK5P8vziO\naYMg1zfTiowp0wlA46vBy+cS0pzXsHEujg9+Pq8CXGS2cxj77qtCO6s0MwqtyvWN\nwKtt/J8dAgMBAAECggEAAR/rWNeBL2jV7rSCXib4lwThf0t/HJ+/kjXYNIJJVoSf\n2lxY1m5NxNUokV4QLZ04a3zPa8QKq5QHsU6+9garhrHsKuhNALfGy9+auk8AL71m\nUFR9vLEgFVR1MxOxtwIFc7Tr81LAGhu+O0+51eLVdVH+UUtvXEIdKXWZzZOqDX7l\nPXLukXQTMej8DLFwYbzzMud8HXq6GPiaxDOo2zy43X2rEJ7qnmiwc9gxVXaKaUdi\niw5b9goUhGqbQT8FLB87x2XbhrjAvc0SCRnDo5AKMdkr+miPKpgzVE+YfvvlLFBe\n0s1qkNc41NgDaEs/FSWFkrQkOy0jFZIArP+WqPBMXQKBgQDvHXvPoJe/nqgD8yLg\ncTjRHylSUt0RoTIMhFsRlUdETtkMsaSu8ZdPytwPFaeek6ysCNV2Rr+8n9K87Qgb\nC1SGDwzdkNWuQHnqvINRvOsFTM+dkZ2NFfkjzLUdUt9Q5yWROyRX+gX1e72wreTm\n3VLpeeEd4lDaUCHhSNbxXSVwRwKBgQDjraaMlVbtv9NaD5rrpJ8qxES2kUTpzPM1\nuYNJ8z9po6kgxdP6FY6yU/XOuctdWFA+cSOc1FxfkGGgQO/29ann3Pnq0A3pKsHO\nNegCnesx3svmfApegon6W89vEHbyj9O/UxtM97+KWra+cT/rz0d3wXlTeVk1A3yU\nyRNXS15rewKBgQCzstCtRN9GHpHeBgcb7XrpjiWbvLJu4VmflohqOmmIqEjuBULi\nRqWUTbv7iiaiQhDuaOUjMiA+PU4+tVP2HxmydfURPhuYDNSS2IFIGFX3cbZFkH16\n3hySDvG9y94QCuZssqmphDieOBRihw0TgxkgZXwM3Vwt9TLA/+CpG3tbWQKBgG42\nyJHzVRJgMsK9HSSHG1nLiuvJ5M89HFrcg/aPXxoXVK79tQCx4NLom+xHum9kaevg\nPvoTPugv72JxLPiisW4BZaXKs4E05n6ZT8e8hHcuwAvB7g8UKBDe0sqT8NC42Ssb\n4vJeWAV0plQIZIYVYCZTrRTAgHOOTYeE0u0GGh3zAoGBAKuB2pPX7wAsmUGRBuGq\nT35pFezOWwIPuQyb9hy+P+D83OxxqAN8FemE3guRIDNxEpJpFsdI3244a9DF+bmP\nXuvhe2By5FOAKnPT2ymKlQeJhcNnMq0LVeuIX6LwL9CGOkxsJi5EIE7TujAsm+3+\nkS/M5BBbUTRmaZJ9I7NIbEAG\n-----END PRIVATE KEY-----\n",
+  "client_email": "onbeats-storage@onbeats-350607.iam.gserviceaccount.com",
+  "client_id": "110843556248005984719",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/onbeats-storage%40onbeats-350607.iam.gserviceaccount.com"
+}
