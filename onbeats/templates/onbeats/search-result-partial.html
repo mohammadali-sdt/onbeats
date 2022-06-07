@@ -1,3 +1,4 @@
+{% load thumbnail %}
 {% for artist in artists %}
     <li class="search-form__item">
         <a
@@ -5,7 +6,7 @@
                 class="search-form__link search-form__link--artist"
         >
             <img
-                    src="{{ artist.profile.url }}"
+                    src="{% thumbnail artist.profile 50x0 %}"
                     class="search-form__img"
                     alt="{{ artist.name }}"
             />
@@ -23,7 +24,7 @@
                 class="search-form__link search-form__link--album"
         >
             <img
-                    src="{{ album.cover.url }}"
+                    src="{% thumbnail album.cover 48x0 %}"
                     class="search-form__img"
                     alt="{{ album.name }}"
             />
@@ -38,7 +39,7 @@
     <li class="search-form__item">
         <a href="{% url 'onbeats:get_album_songs' song.album.slug %}" class="search-form__link search-form__link--song">
             <img
-                    src="{{ song.album.cover.url }}"
+                    src="{% thumbnail song.album.cover 48x0 %}"
                     class="search-form__img"
                     alt="{{ song.name }}"
             />

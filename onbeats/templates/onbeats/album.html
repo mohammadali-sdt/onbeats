@@ -1,56 +1,69 @@
-{% extends 'onbeats/base.html' %} {% load static %} {% block title %} onBeats >
-{{ album.name|title }} {% endblock %} {% block heroImage %}
-<img
-  src="{{ album.artist.cover.url }}"
-  alt="{{ album.artist.name }}"
-  class="heroImage__img"
-/>
-{% endblock %} {% block albumDetail %}
-<!-- Album Detail -->
-<div class="album-detail">
-  <img
-    src="{{ album.cover.url }}"
-    alt="{{ album.name }}"
-    class="album-detail__img"
-  />
-  <div class="album-detail__content">
-    <h2 class="album-detail__name">{{ album.name|title }}</h2>
-    <h2 class="album-detail__style">{{ album.genre|title }}</h2>
-    <h2 class="album-detail__year">{{ album.release_year }}</h2>
-  </div>
-</div>
-<!-- End Album Detail -->
-{% endblock %} {% block main %}
-<section class="songs">
-  {% for song in album.songs.all|dictsort:"track_number" %}
-  <!-- Song View  -->
-  <div class="song-view">
+{% extends 'onbeats/base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}
+    onBeats > {{ album.name|title }} {% endblock %}
+{% block heroImage %}
     <img
-      src="{{ album.cover.url }}"
-      alt="{{ song.name }}"
-      class="song-view__cover"
+            srcset="{% thumbnail album.artist.cover 600x0 %} 600w, {% thumbnail album.artist.cover 900x0 %} 900w, {% thumbnail album.artist.cover 1200x0 %} 1200w"
+            sizes="(max-width: 37.5em) 100vw, (max-width: 56.25em) 100vw, 900w"
+            src="{% thumbnail album.artist.cover 1200x0 %}"
+            alt="{{ album.artist.name }}"
+            class="heroImage__img"
     />
-    <div class="song-view__name">
-      <h2 class="song-view__name">{{ song.name|title|truncatechars:16 }}</h2>
+{% endblock %} {% block albumDetail %}
+    <!-- Album Detail -->
+    <div class="album-detail">
+        <img
+                srcset="{% thumbnail album.cover 144x0 %} 144w, {% thumbnail album.cover 244x0 %} 244w"
+                sizes="(max-width: 37.5em) 24vw, (max-width: 56.25em) 27vw, 244w"
+                src="{% thumbnail album.cover 252x0 %}"
+                alt="{{ album.name }}"
+                class="album-detail__img"
+        />
+        <div class="album-detail__content">
+            <h2 class="album-detail__name">{{ album.name|title }}</h2>
+            <h2 class="album-detail__style">{{ album.genre|title }}</h2>
+            <h2 class="album-detail__year">{{ album.release_year }}</h2>
+        </div>
     </div>
-    <audio
-      controls
-      controlsList="nodownload"
-      preload="auto"
-      class="song-view__song"
-      src="{{ song.file.url }}"
-    ></audio>
-    <a
-      class="song-view__download"
-      href="{% if user.is_authenticated %}{{ song.file.url }}{% else %}{% url 'login' %}?next={{ request.path }}{% endif %}"
-    >
-      <img
-        src="{% static 'img/download-icon.png' %}"
-        alt="download {{ song.name }}"
-      />
-    </a>
-  </div>
-  <!-- End Song View  -->
-  {% endfor %}
-</section>
-{%endblock%}
+    <!-- End Album Detail -->
+{% endblock %} {% block main %}
+    <section class="songs">
+        {% for song in album.songs.all|dictsort:"track_number" %}
+            <!-- Song View  -->
+            <div class="song-view">
+                <img
+                        srcset="{% thumbnail album.cover 80x0 %} 80w, {% thumbnail album.cover 122x0 %} 122w, {% thumbnail album.cover 126x0 %} 126w"
+                        sizes="(max-width: 37.5em) 13vw, (max-width: 56.25em) 14vw, 126w"
+                        src="{% thumbnail album.cover 126x0 %}"
+                        alt="{{ song.name }}"
+                        class="song-view__cover"
+                />
+                <div class="song-view__name">
+                    <h2 class="song-view__name">{{ song.name|title|truncatechars:16 }}</h2>
+                </div>
+                <audio
+                        controls
+                        controlsList="nodownload"
+                        preload="auto"
+                        class="song-view__song"
+                        src="{{ song.file.url }}"
+                ></audio>
+                <a
+                        class="song-view__download"
+                        href="
+
+
+                                {% if user.is_authenticated %}{{ song.file.url }}{% else %}{% url 'login' %}?next={{ request.path }}{% endif %}"
+                >
+                    <img
+                            src="{% static 'img/download-icon.png' %}"
+                            alt="download {{ song.name }}"
+                    />
+                </a>
+            </div>
+            <!-- End Song View  -->
+        {% endfor %}
+    </section>
+{% endblock %}

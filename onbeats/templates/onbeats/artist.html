@@ -1,11 +1,14 @@
 {% extends 'onbeats/base.html' %}
+{% load thumbnail %}
 {% load static %}
 {% block title %}
     onBeats > {{ artist.name|title }}
 {% endblock %}
 {% block heroImage %}
     <img
-            src="{{ artist.cover.url }}"
+            srcset="{% thumbnail artist.cover 600x0 %} 600w, {% thumbnail artist.cover 900x0 %} 900w, {% thumbnail artist.cover 1200x0 %} 1200w"
+            sizes="(max-width: 37.5em) 100vw, (max-width: 56.25em) 100vw, 900w"
+            src="{% thumbnail artist.cover 1200x0 %}"
             alt="{{ artist.name }}"
             class="heroImage__img"
     />
@@ -14,7 +17,9 @@
     <div class="artist-profile">
         <div class="artist-profile__imageWrapper">
             <img
-                    src="{{ artist.profile.url }}"
+                    srcset="{% thumbnail artist.profile 120x0 %} 120w, {% thumbnail artist.profile 168x0 %} 168w"
+                    sizes="(max-width: 37.5em) 20vw, (max-width: 56.25em) 13vw, 168w"
+                    src="{% thumbnail artist.profile 168x0 %}"
                     alt="{{ artist.name }}"
                     class="artist-profile__img"
             />
@@ -39,7 +44,7 @@
         {% for album in artist.albums.all|dictsortreversed:"release_year" %}
             <div class="albumView">
                 <div class="albumView__cover">
-                    <img src="{{ album.cover.url }}" alt="albumCover"/>
+                    <img src="{% thumbnail album.cover 240x0 %}" alt="albumCover"/>
                 </div>
                 <h2 class="albumView__title">{{ album.name }}</h2>
                 <h3 class="albumView__description">{{ album.release_year }}</h3>

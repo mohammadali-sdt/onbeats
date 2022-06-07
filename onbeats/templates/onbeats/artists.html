@@ -1,5 +1,6 @@
 {% extends 'onbeats/base.html' %}
 {% load static %}
+{% load thumbnail %}
 {% block title %}
     onBeats > Artists
 {% endblock %}
@@ -9,12 +10,12 @@
             <div class="artistView">
                 <img
                         class="artistView__profile"
-                        src="{{artist.profile.url}}"
+                        src="{% thumbnail artist.profile 160x0 %}"
                         alt="{{ artist.name }}"
                 />
                 <img
                         class="artistView__bg"
-                        src="{{artist.profile.url}}"
+                        src="{% thumbnail artist.profile 240x0 %}"
                         alt="{{ artist.name }}"
                 />
                 <h2 class="artistView__name">{{ artist.name }}</h2>

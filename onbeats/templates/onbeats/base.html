@@ -24,6 +24,8 @@
           <div class="heroImage__shadow"></div>
           {% block heroImage %}
           <img
+            srcset="{% static 'img/hero-full-sm.png' %} 600w, {% static 'img/hero-full-md.png' %} 900w, {% static 'img/hero-full.png' %} 1200w"
+            sizes="(max-width: 37.5em) 100vw, (max-width: 56.25em) 100vw, 900w"
             src="{% static 'img/hero-full.png' %}"
             alt="Hero image"
             class="heroImage__img"
